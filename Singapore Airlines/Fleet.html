@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Fleet</title>
+    <link rel="icon" type="img/png" href="Images\images-removebg-preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="family">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased; 
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        margin:0; 
+        background-color: #f4f6f8;
+        color: #2c3e50;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    }
+    
+    .header {
+            background-color: rgb(7, 41, 82);
+            padding: 1px 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            height: 100px;
+            box-sizing: border-box;
+            overflow: hidden;
+    }
+
+    .content {
+            display: flex;         
+            flex-direction: row;   
+            align-items: center;   
+            gap: 10px;             
+    }
+
+    .content button {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            cursor: pointer;
+    }
+
+    .content button:hover {
+            background-color: #B79257;
+            transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .content button:active {
+           background-color: rgb(7, 41, 82);
+    }
+
+    .logo-area img {
+            height: 90px; 
+            width: auto;
+            display: block;
+    }
+
+    .User-Profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    }
+
+    .User-Profile button {
+            height: 65px;  
+            width: 65px;   
+            border-radius: 50%; 
+            padding: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            cursor: pointer;
+    }
+
+    .User-Profile button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        background-color: #B79257;
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-links a::after {
+        content: '›'; 
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px); 
+    }
+
+    .sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .user-sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000; 
+        top: 0;
+        right: 0; 
+        background-color: #B79257; 
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 20px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .user-sidebar img {
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        
+    }
+
+    .user-sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .user-sidebar-links a::after {
+        content: '›';
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .user-sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .user-sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .user-sidebar .closebutton {
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+        line-height: 1;
+        order: 2;
+    }
+
+    .user-sidebar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px 20px 30px;
+        border-top: 5px solid white;
+        border-bottom: 5px solid white; 
+        margin-bottom: 15px;
+        background-color: rgb(7, 41, 82);
+    }
+
+    .discover {
+        max-width: 100%;
+        height: 500px;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+    }
+
+    .discover p span, .cargo p span, .future p span {
+        color: #B79257;
+        padding: 20px;
+    }
+
+    .discover p{
+        color: rgb(7, 41, 82);
+        font-size: 42px;
+        font-weight: bold;
+        margin-top: 420px;
+        z-index: 1;
+        position: absolute;
+    }
+
+    .discover img {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        position: relative;
+        object-fit: cover;
+        opacity: 0.7;
+        overflow: hidden;
+    }
+
+    .info {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        height: 300px;
+        max-width: 1200px;
+        background-color: white;
+        margin: 60px auto;
+        padding: 40px;
+    }
+
+    .info p{
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        color: #2c3e50;
+        max-width: 1200px;
+        line-height: 1.8;
+        font-weight: 400;
+    }
+
+    .plane {
+        max-width: 1200px;
+        height: 600px;
+        border-radius: 8px;
+        border: 2px #B79257 solid;
+        margin: 60px auto;
+        position: relative; 
+        overflow: hidden;   
+    }
+
+    .plane-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .plane-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .plane:hover .plane-img img {
+        opacity: 0.4; 
+    }
+
+    .text {
+        color: white;
+        display: none; 
+        line-height: 1.6;
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 40px;
+        background-color: rgba(7, 41, 82, 0.7); 
+        box-sizing: border-box;
+    }
+
+    .text p {
+        font-size: 24px;
+    }
+    
+    .cargo, .future {
+        max-width: 1200px;
+        margin: 40px auto;
+        position: relative;
+        height: 60px; 
+    }
+    .cargo p, .future p {
+        margin-top: 0; 
+        position: relative;
+        color: rgb(7, 41, 82);
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .site-footer {
+    background-color: rgb(7, 41, 82);
+    color: #ffffff;
+    padding: 60px 40px 20px 40px;
+    margin-top: 60px; 
+    }
+
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+    }
+
+    .footer-brand .footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 15px;
+    }
+
+    .footer-brand .footer-tagline {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cbd5e1; 
+    margin-bottom: 20px;
+    }
+
+    .footer-socials a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+    color: #B79257; 
+    }
+
+    .footer-container h3 {
+    color: #B79257; 
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    }
+
+    .footer-apps p {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin: 5px 0 15px 0;
+    }
+
+    .footer-apps strong {
+    color: #ffffff;
+    }
+
+    .download-text {
+    margin-top: 20px;
+    font-weight: bold;
+    }
+
+    .app-buttons {
+    display: flex;
+    gap: 10px;
+    }
+
+    .app-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    }
+
+    .app-btn:hover {
+    background-color: #B79257;
+    border-color: #B79257;
+    }
+
+    .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #94a3b8;
+    }
+
+    .footer-bottom p {
+    margin: 0;
+    }
+
+    .footer-legal-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-legal-links a:hover {
+    color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-area">
+            <img src="Images\images-removebg-preview.png" alt="Logo">
+        </div>
+        <div class="content" >
+            <button onclick="openNav()">Menu</button>
+            <a href="About Page.html" style="text-decoration: none;">
+            <button>About</button>
+            </a>
+            <a href="Careers.html" style="text-decoration: none;">
+            <button>Careers</button>
+            </a>
+            <a href="Login.html" style="text-decoration: none;">
+            <button>Login</button>
+            </a>
+            <div class="User-Profile">
+            <button onclick="openNavigation()"><img src="Images\727399.png"></button>
+            </div>
+        </div>
+    </div>
+     
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sidebar-links">
+            <a href="Homepage.html">Home</a>
+            <a href="Bookings.html">Book a Flight</a>
+            <a href="#">Flight Status</a>
+            <a href="Web-checkin.html">Web Check-In</a>
+            <a href="#">Inflight Services</a>
+            <a href="Destinations.html">Destinations</a>
+            <a href="#">Our Fleet</a>
+            
+        </div>
+    </div>
+
+    <div id="user-Sidebar" class="user-sidebar">
+    <div class="user-sidebar-top">
+        <div id="user-sidebar-profile" class="user-sidebar-profile">
+            <img src="Images\727399.png" alt="User Profile">
+        </div>
+        <a href="javascript:void(0)" class="closebutton" onclick="closeNavigation()">&times;</a>
+    </div>
+    
+    <div class="user-sidebar-links">
+        <a href="#">Your Account</a>
+        <a href="#">Your Bookings</a>
+        <a href="#">Reward Points</a>
+        <a href="#">Notifications</a>
+        <a href="Login.html" onclick="alert('Are you sure you want to log out?')">Log Out</a>
+    </div>
+    </div>
+
+    <div class="discover">
+        <p><span>|</span>Discover Our Fleet</p>
+        <img src="Images\singapore-airlines-a380.jpg">
+    </div>
+
+    <div class="info">
+        <p>Explore the world with us, and experience a journey unlike any other on some of the most comfortable and spacious aircraft in the world. 
+        <br>Wherever your travels may take you with Singapore Airlines, you’ll be flying on one of the most modern aircraft and fuel-efficient fleets in the skies.</p>
+        <p>We invite you to step onboard and luxuriate in our warm and impeccable service, and discover a journey that’s every bit as delightful as the destination itself.</p>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\pexels-photo-18315976.jpeg">
+        </div>
+        <div class="text">
+        <h1>BOEING 737</h1>
+        <p>The Boeing 737 MAX is a series of narrow-body aircraft developed by Boeing Commercial Airplanes as the fourth generation of the Boeing 737. 
+        <br>It succeeds the Boeing 737 Next Generation and incorporates more efficient CFM International LEAP engines,
+        <br>aerodynamic improvements such as split-tip winglets, and structural modifications.</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\Singapore-Airlines-787-Business-Class-4.webp">
+        </div>
+        <div class="text">
+        <h1>BOEING 787 DREAMLINER</h1>
+        <p>The Boeing 787 Dreamliner, often shortened to Boeing 787, is an American wide-body airliner developed and manufactured by Boeing Commercial Airplanes.
+        <br>After dropping its unconventional Sonic Cruiser project, 
+        <br>Boeing announced the conventional 7E7 on January 29, 2003, which focused largely on efficiency.</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\hPmqJvddrIynCjPrLqFoJhOjodEoTjgGOxTcMYKmiFGekmYTHWVGAoJwkcvpuuDh.jpg">
+        </div>
+        <div class="text">
+        <h1>AIRBUS A350</h1>
+        <p>The Airbus A350 is a long-range, wide-body twin-engine airliner developed and produced by Airbus. 
+        <br>The initial A350 design, which was proposed in 2004, in response to the Boeing 787 Dreamliner, 
+        <br>would have been a development of the Airbus A330 with composite wings, advanced winglets, and new efficient engines.
+        <br> Due to inadequate market support, Airbus switched in 2006 to a clean-sheet extra wide body (XWB) design, 
+        <br>powered by two Rolls-Royce Trent XWB high bypass turbofan engines.</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\acft-b773-4.jpg">
+        </div>
+        <div class="text">
+        <h1>BOEING 777</h1>
+        <p>The Boeing 777, commonly referred to as the Triple Seven, is an American long-range wide-body airliner developed and manufactured by Boeing Commercial Airplanes.
+        <br>The 777 is the world's largest twinjet and the most-built wide-body airliner.
+        <br>The jetliner was designed to bridge the gap between Boeing's other wide body airplanes, the twin-engined 767 and quad-engined 747, 
+        <br>and to replace aging DC-10 and L-1011 trijets.</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\SQ-A380s-Changi-Taxi-Planes-Portrait-Aviation-Media.jpg">
+        </div>
+        <div class="text">
+        <h1>AIRBUS A380</h1>
+        <p>The Airbus A380 is a large wide-body airliner, developed and produced by Airbus from 2003 to 2021. 
+        <br>It is the world's largest passenger airliner and the only full-length double-deck jet airliner. 
+        <br>Airbus studies started in 1988, and the project was announced in 1990 to challenge the dominance of the Boeing 747 in the long-haul market. 
+        <br>The then-designated A3XX project was presented in 1994 and Airbus launched the €9.5 billion (US$10.7 billion) A380 programme on 19 December 2000.</p>
+        </div>
+    </div>
+
+    <div class="cargo">
+        <p><span>|</span>Our Cargo Operators</p>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\Singapore_Airlines_Airbus_A350-941_F-WZFD_to_9V-SMF.jpg">
+        </div>
+        <div class="text">
+        <h1>AIRBUS A350-1000</h1>
+        <p>The Airbus A350 is a long-range, wide-body twin-engine airliner developed and produced by Airbus. 
+        <br>The initial A350 design, which was proposed in 2004, in response to the Boeing 787 Dreamliner, 
+        <br>would have been a development of the Airbus A330 with composite wings, advanced winglets, and new efficient engines.
+        <br> Due to inadequate market support, Airbus switched in 2006 to a clean-sheet extra wide body (XWB) design, 
+        <br>powered by two Rolls-Royce Trent XWB high bypass turbofan engines.</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\acft-b773-4.jpg">
+        </div>
+        <div class="text">
+        <h1>BOEING 777-900</h1>
+        <p>The Boeing 777, commonly referred to as the Triple Seven, is an American long-range wide-body airliner developed and manufactured by Boeing Commercial Airplanes.
+        <br>The 777 is the world's largest twinjet and the most-built wide-body airliner.
+        <br>The jetliner was designed to bridge the gap between Boeing's other wide body airplanes, the twin-engined 767 and quad-engined 747, 
+        <br>and to replace aging DC-10 and L-1011 trijets.</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\9v_spq_singapore_departure6_1170_74086b2a8c.jpg">
+        </div>
+        <div class="text">
+        <h1>BOEING 747</h1>
+        <p>The Boeing 747-400 is a large, long-range wide-body airliner produced by Boeing Commercial Airplanes, as an advanced version of the original Boeing 747.
+        <br>The model was first introduced as the Advanced Series 300 was announced at the September 1984 Farnborough Airshow,
+        <br>targeting a 10% cost reduction with more efficient engines and 1,000 nautical miles [nmi] (1,900 km; 1,200 mi) range increase.</p>
+        </div>
+    </div>
+
+    <div class="future">
+        <p><span>|</span>Our Future Add-Ons</p>
+    </div>
+  
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\a350fpr12.webp">
+        </div>
+        <div class="text">
+        <h1>AIRBUS A350-900</h1>
+        <p>An A350-900 freighter was first mentioned in 2007, offering a similar capacity to the McDonnell Douglas MD-11F with a range of 9,250 km (5,000 nmi; 5,750 mi),
+        <br>to be developed after the passenger version. In early 2020, Airbus was proposing an A350F before a potential launch.
+        <br>The proposed freighter would be slightly longer than the A350-900 and Airbus would need 50 orders to launch the $2–3 billion programme</p>
+        </div>
+    </div>
+
+    <div class="plane">
+        <div class="plane-img">
+        <img src="Images\Boeing777xLarge-10-scaled.webp">
+        </div>
+        <div class="text">
+        <h1>BOEING 777X</h1>
+        <p>The Boeing 777X is an American long-range, wide-body, twin-engine airliner built by Boeing Commercial Airplanes, undergoing flight testing. 
+        <br>A substantial development from the original Boeing 777, changes for the 777X include General Electric GE9X engines,
+        <br>composite wings with folding wingtips, greater cabin width and seating capacity, and technologies from the Boeing 787 Dreamliner.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+        <div class="footer-brand">
+            <img src="Images\images-removebg-preview.png" alt="Singapore Airlines Logo" class="footer-logo">
+            <p class="footer-tagline">Fly with comfort, luxury, and world-class hospitality. Experience the premier journey across global horizons.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="footer-apps">
+            <h3>Connect With Us</h3>
+            <p class="contact-number"><strong>Hotline:</strong> +65 6223 8888</p>
+            <p class="contact-email"><strong>Email:</strong> support@singaporeair.com</p>
+            <p class="download-text">Download the KrisFlyer App:</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn">App Store</a>
+                <a href="#" class="app-btn">Google Play</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer-bottom">
+        <p>&copy; 2026 Singapore Airlines. All Rights Reserved.</p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Cookie Policy</a>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+       function openNav() {
+          document.getElementById("mySidebar").style.width = "300px";
+        }
+
+       function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openNavigation() {
+          document.getElementById("user-Sidebar").style.width = "300px";
+        }
+
+       function closeNavigation() {
+          document.getElementById("user-Sidebar").style.width = "0";
+        }
+
+        $(document).ready(function(){
+        $(".plane").hover(
+            function() {
+                $(this).find(".text").fadeIn("fast");
+            }, 
+            function() {
+                $(this).find(".text").fadeOut("fast");
+            }
+        );
+        });
+
+    </script>
+</body>
+</html>

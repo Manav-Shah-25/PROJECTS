@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers with SIA</title>
+    <link rel="icon" type="img/png" href="Images\images-removebg-preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="family">
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+
+    <style>
+
+    html{
+        scroll-behavior: smooth;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased; 
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        margin:0; 
+        background-color: #f4f6f8;
+        color: #2c3e50;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    }
+    
+    .header {
+            background-color: rgb(7, 41, 82);
+            padding: 1px 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            height: 100px;
+            box-sizing: border-box;
+            overflow: hidden;
+    }
+
+    .content {
+            display: flex;         
+            flex-direction: row;   
+            align-items: center;   
+            gap: 10px;             
+    }
+
+    .content button {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            cursor: pointer;
+    }
+
+    .content button:hover {
+            background-color: #B79257;
+            transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .content button:active {
+           background-color: rgb(7, 41, 82);
+    }
+
+    .logo-area img {
+            height: 90px; 
+            width: auto;
+            display: block;
+    }
+
+    .User-Profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    }
+
+    .User-Profile button {
+            height: 65px;  
+            width: 65px;   
+            border-radius: 50%; 
+            padding: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            cursor: pointer;
+    }
+
+    .User-Profile button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        background-color: #B79257;
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-links a::after {
+        content: '›'; 
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px); 
+    }
+
+    .sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .user-sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000; 
+        top: 0;
+        right: 0; 
+        background-color: #B79257; 
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 20px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .user-sidebar img {
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        
+    }
+
+    .user-sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .user-sidebar-links a::after {
+        content: '›';
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .user-sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .user-sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .user-sidebar .closebutton {
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+        line-height: 1;
+        order: 2;
+    }
+
+    .user-sidebar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px 20px 30px;
+        border-top: 5px solid white;
+        border-bottom: 5px solid white; 
+        margin-bottom: 15px;
+        background-color: rgb(7, 41, 82);
+    }
+
+    .careers {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+    }
+
+    .careers img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        object-fit: cover;
+    }
+
+    .careers-text {
+        font-size: 72px;
+        z-index: 2;
+        color: white;
+        position: absolute;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        margin-top: 300px;
+        padding-left: 20px;
+        font-weight: bold;
+
+    }
+
+    .info-heading, .flow-chart-heading, .apply {
+        margin-top: 80px;
+    }
+
+    .info-heading p span, .flow-chart-heading p span, .apply p span{
+        color: #B79257;
+        padding: 20px;
+    }
+
+    .info-heading p {
+        color: rgb(7, 41, 82);
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .info {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        height: 400px;
+        max-width: 1400px;
+        background-color: white;
+        margin: 60px auto;
+        padding: 40px;
+    }
+
+    .info p{
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        color: #2c3e50;
+        max-width: 1200px;
+        line-height: 1.8;
+        font-weight: 400;
+    }
+
+    .flow-chart-heading p {
+        color: rgb(7, 41, 82);
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .apply p {
+        color: rgb(7, 41, 82);
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .item-heading {
+        font-size: 28px;
+        max-width: 90%;
+        height: 80px;
+        margin-top: 50px;
+        background-color: rgb(7, 41, 82);
+        border: 5px solid #B79257;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+
+    .flowchart {
+        display: flex;
+        margin-top: 100px;
+        justify-content: space-between;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .item {
+        max-width: 700px;
+        height: 400px;
+    }
+
+    .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .desc {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        height: 450px;
+        max-width: 700px;
+        background-color: rgb(7, 41, 82);
+        padding: 40px;
+    }
+
+    .head {
+        font-size: 28px;
+        color: white;
+        padding: 20px auto;
+        font-weight: bold;
+        text-decoration: underline #B79257;
+    }
+
+    .content {
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        max-width: 600px;
+        line-height: 1.8;
+        font-weight: 400;
+    }
+
+    .perks {
+        max-width: 700px;
+        height: 50px;
+        font-size: 18px;
+        border-style: outset;
+        background-color: #B79257;
+        color: rgb(7, 41, 82);
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 20px;
+        font-weight: bold;
+        padding-left: 20px;
+    }
+
+    .benefits {
+        display: none;
+        font-size: 18px;
+        line-height: 1.5;
+        max-width: 700px;
+        height: 350px;
+        border-style: outset;
+        background-color: #ffffff;
+        color: #2c3e50;
+    }
+
+    .benefits p {
+        padding-left: 20px;
+    }
+
+    .form{
+        border: 5px #B79257 solid;
+        width: 700px;
+        height: 700px;
+        border-radius: 12px;
+        color: #2c3e50;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        margin: 60px auto;
+    }
+
+    .form p{
+        font-size: 28px;
+        color:rgb(7, 41, 82);
+        text-align: center;
+        font-weight: bold;
+        text-decoration: underline #B79257;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        margin-left: 100px;
+    }
+
+    input, select {
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 500px;
+        box-sizing: border-box; 
+        margin-left: 100px;
+    }
+
+    .form button{
+        background-color: #B79257; 
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        transition: background-color 0.3s, transform 0.2s;
+        width: 500px;
+        margin-left: 100px;
+    }
+
+    .form button:hover {
+        background-color: rgb(7, 41, 82); 
+        transform: translateY(-2px);
+    }
+
+    .choice {
+        margin-bottom: 15px;
+        }
+
+    .choice input {
+        width: auto;
+        margin-right: 5px;
+    }
+
+    .site-footer {
+    background-color: rgb(7, 41, 82);
+    color: #ffffff;
+    padding: 60px 40px 20px 40px;
+    margin-top: 60px; 
+    }
+
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+    }
+
+    .footer-brand .footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 15px;
+    }
+
+    .footer-brand .footer-tagline {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cbd5e1; 
+    margin-bottom: 20px;
+    }
+
+    .footer-socials a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+    color: #B79257; 
+    }
+
+    .footer-container h3 {
+    color: #B79257; 
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    }
+
+    .footer-apps p {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin: 5px 0 15px 0;
+    }
+
+    .footer-apps strong {
+    color: #ffffff;
+    }
+
+    .download-text {
+    margin-top: 20px;
+    font-weight: bold;
+    }
+
+    .app-buttons {
+    display: flex;
+    gap: 10px;
+    }
+
+    .app-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    }
+
+    .app-btn:hover {
+    background-color: #B79257;
+    border-color: #B79257;
+    }
+
+    .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #94a3b8;
+    }
+
+    .footer-bottom p {
+    margin: 0;
+    }
+
+    .footer-legal-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-legal-links a:hover {
+    color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-area">
+            <img src="Images\images-removebg-preview.png" alt="Logo">
+        </div>
+        <div class="content" >
+            <button onclick="openNav()">Menu</button>
+            <a href="About Page.html" style="text-decoration: none;">
+            <button>About</button>
+            </a>
+            <a href="Careers.html" style="text-decoration: none;">
+            <button>Careers</button>
+            </a> 
+            <a href="Login.html" style="text-decoration: none;">
+            <button>Login</button>
+            </a>
+            <div class="User-Profile">
+            <button onclick="openNavigation()"><img src="Images\727399.png"></button>
+            </div>
+        </div>
+    </div>
+     
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sidebar-links">
+            <a href="Homepage.html">Home</a>
+            <a href="Bookings.html">Book a Flight</a>
+            <a href="#">Flight Status</a>
+            <a href="Web-checkin.html">Web Check-In</a>
+            <a href="#">Inflight Services</a>
+            <a href="Destinations.html">Destinations</a>
+            <a href="Fleet.html">Our Fleet</a>
+            
+        </div>
+    </div>
+
+    <div id="user-Sidebar" class="user-sidebar">
+    <div class="user-sidebar-top">
+        <div id="user-sidebar-profile" class="user-sidebar-profile">
+            <img src="Images\727399.png" alt="User Profile">
+        </div>
+        <a href="javascript:void(0)" class="closebutton" onclick="closeNavigation()">&times;</a>
+    </div>
+    
+    <div class="user-sidebar-links">
+        <a href="#">Your Account</a>
+        <a href="#">Your Bookings</a>
+        <a href="#">Reward Points</a>
+        <a href="#">Notifications</a>
+        <a href="Login.html" onclick="alert('Are you sure you want to log out?')">Log Out</a>
+    </div>
+    </div>
+
+    <div class="careers">
+        <div class="img">
+        <img src="Images\SIA-Pilots-520x280.jpg">
+        </div>
+        <div class="careers-text">
+            <p>Join the team
+            <br>of Singapore Airlines</p>
+        </div>
+    </div>
+
+    <div class="info-heading">
+        <p><span>|</span>Our Goal</p>
+    </div>
+
+    <div class="info">
+        <p>As the world’s most awarded airline, Singapore Airlines (SIA) leads the way in global aviation, delivering extraordinary travel experiences while staying committed to safety, excellence, and innovation.
+        <br>At SIA, we believe in empowering and developing our people to thrive. 
+        <br>We invest in our people’s growth, and our dynamic and supportive work environment inspires each team member to reach their fullest potential and contribute to the continued success of our airline.
+        <br>We are always looking for passionate, talented individuals to join SIA. 
+        <br>Whether you aspire to soar through the clouds as a pilot, deliver world-class service as a cabin crew, or work behind the scenes to keep our operations running smoothly as a ground professional, you can find your wings with us.
+        <br>Soar higher together with us and explore career opportunities at SIA.</p>
+    </div>
+
+    <div class="flow-chart-heading">
+        <p><span>|</span>The sky is the limit –<span>start your journey with us today.</span></p>
+    </div>
+
+    <div class="item-heading">
+        <p>EXPLORE CAREER OPPORTUNITIES</p>
+    </div>
+    <div class="flowchart">
+            <div class="item">
+                   <img src="Images\sq-cadet19.jpg">
+            </div>
+            <div class="details">
+                <div class="desc" id="desc">
+                    <div class="head"><p>PILOTS</p></div>
+                    <div class="content"><p>Take to the skies with one of Singapore Airlines’ modern and fuel-efficient aircraft. 
+                    <br>We provide our pilots with rigorous training to set the highest standards in aviation. 
+                    <br>As you grow in your career, you have the opportunity to rise through the ranks, or explore specialised paths in Technical, Training, or Management – designed to match your aspirations.</p>
+                    </div>
+                </div>  
+                <div class="perks">
+                    <p>REMUNERATION AND BENEFITS</p>
+                    <p>&#9660;</p>
+                </div>
+                <div class="benefits">
+                <p>When you join us, you will enjoy more than just a competitive salary:</p>
+                <ul>
+                <li>Once-a-year free travel to any SIA-operated destination.</li>
+                <br>
+                <li>Access to unlimited discounted travel for you and your eligible family member(s) on flights operated by SIA and our airline partners.</li>
+                <br>
+                <li>Medical, dental, and insurance coverage.</li>
+                <br>
+                <li>Ongoing training and career development opportunities to help you grow and succeed.</li>
+                </ul>
+                </div>
+            </div>
+    </div>
+
+    <div class="flowchart">
+            <div class="details">
+                <div class="desc" id="desc">
+                    <div class="head"><p>CABIN CREW</p></div>
+                    <div class="content"><p>Our cabin crew is made up of diverse talents, bringing unique perspectives and experiences to the team.
+                    <br> Get inspiredExternal Link by our cabin crew members as they share what led them to this exciting career, how they balance life in the sky and on the ground, 
+                    <br>and how they are growing both professionally and personally.</p></div>
+                </div>
+                <div class="perks">
+                    <p>REMUNERATION AND BENEFITS</p>
+                    <p>&#9660;</p>
+                </div>
+                <div class="benefits">
+                <ul>
+                <li>Once-a-year free travel to any SIA-operated destination.</li>
+                <br>
+                <li>Access to unlimited discounted travel for you and your eligible family member(s) on flights operated by SIA and our airline partners.</li>
+                <br>
+                <li>Medical, dental, and insurance coverage.</li>
+                <br>
+                <li>Ongoing training and career development opportunities to help you grow and succeed.</li>
+                </ul>
+                </div>
+            </div>
+            <div class="item">
+                    <img src="Images\SIA-Cabin-Crew-346x180.jpg">
+            </div>
+    </div>
+
+    <div class="flowchart">
+            <div class="item">
+                   <img src="Images\SIA-Ground-Professionals-Commercial-Roles-520x280.jpg">
+            </div>
+            <div class="details">
+                <div class="desc" id="desc">
+                    <div class="head"><p>GROUND STAFF</p></div>
+                    <div class="content"><p>Are you a workforce newbie or an experienced professional?
+                    <br>We offer a wide array of Ground Professional job opportunities where your skills and passion can take flight. 
+                    <br>Be part of a global, innovative team that is shaping the future of aviation.</p></div>
+                </div>
+                <div class="perks">
+                    <p>REMUNERATION AND BENEFITS</p>
+                    <p>&#9660;</p>
+                </div>
+                <div class="benefits">
+                <ul>
+                <li>Medical, dental, and insurance coverage.</li>
+                <br>
+                <li>Ongoing training and career development opportunities to help you grow and succeed.</li>
+                </ul>
+                </div>
+            </div>
+    </div>
+
+    <div class="flowchart">
+            <div class="details">
+                <div class="desc" id="desc">
+                    <div class="head"><p>OPERATIONS</p></div>
+                    <div class="content"><p>Safety, Excellence, Customer-Focus, Care, Integrity, and Teamwork shape how we think, act, and interact with our colleagues, customers, and partners. 
+                    <br>These values foster a culture of shared commitment, collaboration, and respect, 
+                    <br>as we continuously innovate and deliver world-class service to our customers.</p></div>
+                </div>
+                <div class="perks">
+                    <p>ROLES IN OPERATIONS</p>
+                    <p>&#9660;</p>
+                </div>
+                <div class="benefits">
+                <ul>
+                <li>Commercial - Cargo, Branding and Communication, Customer Service Representatives, Sales</li>
+                <br>
+                <li>Corporate - Finance and Audit, Human Resource, Planning</li>
+                <br>
+                <li>Technology - Cybersecurity, Data Analytics, IT and Research</li>
+                <br>
+                <li>Airport Operations - Engineering, airport and baggage handling staff, security, safety and quality </li>
+                </ul>
+                </div>
+            </div>
+            <div class="item">
+                   <img src="Images\customer-focus-2.jpeg">
+            </div>
+    </div>
+
+    <div class="flowchart">
+            <div class="item">
+                   <img src="Images\Executive_Generalist.jpg">
+            </div>
+            <div class="details">
+                <div class="desc" id="desc">
+                    <div class="head"><p>INTERNS</p></div>
+                    <div class="content"><p>Hands-on experience is key to building a strong foundation for a successful career. 
+                    <br>Our interns enjoy the unique opportunity to contribute to meaningful projects that make an impact, gaining invaluable experience in the aviation industry.
+                    <br>This is more than just an internship – it is an opportunity to build networks by working alongside dedicated professionals and gaining insights into our culture.</p></div>
+                </div>
+            </div>
+    </div>
+
+    <div class="apply">
+        <p><span>|</span>Interested to join us?</p>
+    </div>
+    <div class="form">
+        <p>APPLY TO KNOW MORE</p>
+        <br>
+        <form onsubmit="alert('Registered successfully...Our team will reach you for further updates. Thankyou!')">
+            <label for="Name">Enter Your Full Name:</label><br>
+            <input type="text" id="name" placeholder="As per your passport" required>
+            <br>
+            <label for="age">Enter Your Age:</label><br>
+            <input type="text" id="name" placeholder="Atleast 18 years of age" required>
+            <br>
+            <label for="nationality">Enter Your Nationality:</label><br>
+            <input type="text" id="name" required>
+            <br>
+            <label for="e-mail">Enter Your Email-ID:</label><br>
+            <input type="e-mail" id="name" required>
+            <br>
+            <label for="jobrole">Select Your Choice Of Role:</label><br>
+            <select name="Jobrole" id="Jobrole" required>
+                <option></option>
+                <option>Pilot</option>
+                <option>Cabin Crew</option>
+                <option>Ground Staff</option>
+                <option>Operations</option>
+                <option>Intern</option>
+            </select>
+            <br>
+            <div class="choice">
+            <label for="choice">Would you like to get notifications for updates?</label><br><br>
+            <input type="radio" id="choice" name="yes" value="yes">
+            <label for="yes" style="font-weight: normal;">Yes</label>      
+            <input type="radio" id="choice" name="no" value="no">
+            <label for="no" style="font-weight: normal;">No</label>
+            </div>
+            <br><br>
+            <button id="submit" class="submit">Submit</button>
+        </form>
+       
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+        <div class="footer-brand">
+            <img src="Images\images-removebg-preview.png" alt="Singapore Airlines Logo" class="footer-logo">
+            <p class="footer-tagline">Fly with comfort, luxury, and world-class hospitality. Experience the premier journey across global horizons.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="footer-apps">
+            <h3>Connect With Us</h3>
+            <p class="contact-number"><strong>Hotline:</strong> +65 6223 8888</p>
+            <p class="contact-email"><strong>Email:</strong> support@singaporeair.com</p>
+            <p class="download-text">Download the KrisFlyer App:</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn">App Store</a>
+                <a href="#" class="app-btn">Google Play</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer-bottom">
+        <p>&copy; 2026 Singapore Airlines. All Rights Reserved.</p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Cookie Policy</a>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+       function openNav() {
+          document.getElementById("mySidebar").style.width = "300px";
+        }
+
+       function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openNavigation() {
+          document.getElementById("user-Sidebar").style.width = "300px";
+        }
+
+       function closeNavigation() {
+          document.getElementById("user-Sidebar").style.width = "0";
+        }
+
+        $(".perks").click(function see(){
+            $(this).next(".benefits").toggle("slow");
+        });
+
+    </script>
+</body>
+</html>

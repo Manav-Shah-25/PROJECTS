@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About SIA</title>
+    <link rel="icon" type="img/png" href="Images\images-removebg-preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="family">
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+
+    <style>
+
+    html{
+        scroll-behavior: smooth;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased; 
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        margin:0; 
+        background-color: #f4f6f8;
+        color: #2c3e50;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    }
+    
+    .header {
+            background-color: rgb(7, 41, 82);
+            padding: 1px 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            height: 100px;
+            box-sizing: border-box;
+            overflow: hidden;
+    }
+
+    .content {
+            display: flex;         
+            flex-direction: row;   
+            align-items: center;   
+            gap: 10px;             
+    }
+
+    .content button {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            cursor: pointer;
+    }
+
+    .content button:hover {
+            background-color: #B79257;
+            transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .content button:active {
+           background-color: rgb(7, 41, 82);
+    }
+
+    .logo-area img {
+            height: 90px; 
+            width: auto;
+            display: block;
+    }
+
+    .User-Profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    }
+
+    .User-Profile button {
+            height: 65px;  
+            width: 65px;   
+            border-radius: 50%; 
+            padding: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            cursor: pointer;
+    }
+
+    .User-Profile button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        background-color: #B79257;
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-links a::after {
+        content: '›'; 
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px); 
+    }
+
+    .sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .user-sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000; 
+        top: 0;
+        right: 0; 
+        background-color: #B79257; 
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 20px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .user-sidebar img {
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        
+    }
+
+    .user-sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .user-sidebar-links a::after {
+        content: '›';
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .user-sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .user-sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .user-sidebar .closebutton {
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+        line-height: 1;
+        order: 2;
+    }
+
+    .user-sidebar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px 20px 30px;
+        border-top: 5px solid white;
+        border-bottom: 5px solid white; 
+        margin-bottom: 15px;
+        background-color: rgb(7, 41, 82);
+    }
+
+    .about {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+    }
+ 
+    .about img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        object-fit: cover;
+    }
+
+    .about-text {
+        font-size: 72px;
+        z-index: 2;
+        color: white;
+        position: absolute;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        margin-top: 300px;
+        padding-left: 20px;
+        font-weight: bold;
+
+    }
+
+    .info-heading, .flow-chart-heading {
+        margin-top: 80px;
+    }
+
+    .info-heading p span, .flow-chart-heading p span {
+        color: #B79257;
+        padding: 20px;
+    }
+
+    .info-heading p {
+        color: rgb(7, 41, 82);
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .info {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        height: 400px;
+        max-width: 1400px;
+        background-color: white;
+        margin: 60px auto;
+        padding: 40px;
+    }
+
+    .info p{
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        color: #2c3e50;
+        max-width: 1200px;
+        line-height: 1.8;
+        font-weight: 400;
+    }
+
+    .flow-chart-heading p {
+        color: rgb(7, 41, 82);
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .flowchart {
+        display: flex;
+    }
+
+    .flow-item {
+        margin-left: 20px;
+    }
+
+    .f-head {
+        font-size: 18px;
+        max-width: 1200px;
+        height: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        background-color: rgb(7, 41, 82);
+        border: 2px solid #B79257;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .f-img {
+        max-width: 1200px;
+        height: 400px;
+    }
+
+    .f-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .year{
+        max-width: 1200px;
+        height: 50px;
+        font-size: 18px;
+        border-style: outset;
+        background-color: #ffffff;
+        color: #2c3e50;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+    }
+
+    .year p {
+        padding-left: 20px;
+    }
+
+    .desc {
+        display: none;
+        font-size: 18px;
+        line-height: 1.5;
+        max-width: 1200px;
+        height: 150px;
+        border-style: outset;
+        background-color: #ffffff;
+        color: #2c3e50;
+    }
+
+    .list{
+        margin-top: 120px;
+        max-width: 250px;
+        height: 500px;
+        border: 5px #B79257 solid;
+        margin-left: 25px;
+        background-color: rgb(7, 41, 82);
+        color: white;
+    }
+
+    .list a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .list li:hover {
+        transform: scale(1.05);
+        transition: 0.3s ease;
+        color: #B79257;
+    }
+
+    .site-footer {
+    background-color: rgb(7, 41, 82);
+    color: #ffffff;
+    padding: 60px 40px 20px 40px;
+    margin-top: 60px; 
+    }
+
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+    }
+
+    .footer-brand .footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 15px;
+    }
+
+    .footer-brand .footer-tagline {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cbd5e1; 
+    margin-bottom: 20px;
+    }
+
+    .footer-socials a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+    color: #B79257; 
+    }
+
+    .footer-container h3 {
+    color: #B79257; 
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    }
+
+    .footer-apps p {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin: 5px 0 15px 0;
+    }
+
+    .footer-apps strong {
+    color: #ffffff;
+    }
+
+    .download-text {
+    margin-top: 20px;
+    font-weight: bold;
+    }
+
+    .app-buttons {
+    display: flex;
+    gap: 10px;
+    }
+
+    .app-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    }
+
+    .app-btn:hover {
+    background-color: #B79257;
+    border-color: #B79257;
+    }
+
+    .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #94a3b8;
+    }
+
+    .footer-bottom p {
+    margin: 0;
+    }
+
+    .footer-legal-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-legal-links a:hover {
+    color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-area">
+            <img src="Images\images-removebg-preview.png" alt="Logo">
+        </div>
+        <div class="content" >
+            <button onclick="openNav()">Menu</button>
+            <a href="About Page.html" style="text-decoration: none;">
+            <button>About</button>
+            </a>
+            <a href="Careers.html">
+            <button>Careers</button>
+            </a>
+            <a href="Login.html" style="text-decoration: none;">
+            <button>Login</button>
+            </a>
+            <div class="User-Profile">
+            <button onclick="openNavigation()"><img src="Images\727399.png"></button>
+            </div>
+        </div>
+    </div>
+     
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sidebar-links">
+            <a href="Homepage.html">Home</a>
+            <a href="Bookings.html">Book a Flight</a>
+            <a href="#">Flight Status</a>
+            <a href="Web-checkin.html">Web Check-In</a>
+            <a href="#">Inflight Services</a>
+            <a href="Destinations.html">Destinations</a>
+            <a href="Fleet.html">Our Fleet</a>
+            
+        </div>
+    </div>
+
+    <div id="user-Sidebar" class="user-sidebar">
+    <div class="user-sidebar-top">
+        <div id="user-sidebar-profile" class="user-sidebar-profile">
+            <img src="Images\727399.png" alt="User Profile">
+        </div>
+        <a href="javascript:void(0)" class="closebutton" onclick="closeNavigation()">&times;</a>
+    </div>
+    
+    <div class="user-sidebar-links">
+        <a href="#">Your Account</a>
+        <a href="#">Your Bookings</a>
+        <a href="#">Reward Points</a>
+        <a href="#">Notifications</a>
+        <a href="Login.html" onclick="alert('Are you sure you want to log out?')">Log Out</a>
+    </div>
+    </div>
+
+    <div class="about">
+        <div class="img">
+        <img src="Images\what-are-the-benefits-of-flying-singapore-airlines-first-class.avif">
+        </div>
+        <div class="about-text">
+            <p>Know about the 
+            <br>journey of Singapore Airlines</p>
+        </div>
+    </div>
+
+    <div class="info-heading">
+        <p><span>|</span>Our Heritage</p>
+    </div>
+
+    <div class="info">
+        <p>Singapore Airlines officially took flight in 1972 following the split of Malaysia-Singapore Airlines. Tracing its roots back to Malayan Airways in 1947, 
+        the carrier began strictly as an international airline with a small fleet. Directed by the government to become self-sufficient, 
+        it rapidly modernized and expanded its global reach.
+        <br>
+        <br>The carrier famously introduced the iconic "Singapore Girl" in 1972, cementing a reputation for world-class, luxurious hospitality. 
+        <br>It established itself as a pioneering aviation powerhouse by being the global launch customer for the massive Airbus A380 in 2007 and 
+        operating ultra-long-haul routes.<br>
+        <br>
+        Today, it operates out of its primary hub at Singapore Changi Airport as a premier, Skytrax-awarded five-star carrier.</p>
+    </div>
+
+    <div class="flow-chart-heading">
+        <p><span>|</span>To us, travel is more than just being in motion. It’s being in with innovation</p>
+    </div>
+
+    <div class="flowchart">
+        <div class="flow-item">
+            <div class="f-head">
+                <p>ORIGIN AND EARLY YEARS</p>
+            </div>
+            <div class="f-img">
+                <img src="Images\Malayan_Airways_Limited.jpg">
+            </div>
+            <div class="item">
+                <div class="year" id="year1">
+                   <p>1947</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p> Malayan Airways Limited was launched. 
+                    It operated its inaugural flight on May 2—a chartered journey from Singapore to Kuala Lumpur—using an Airspeed Consul aircraft.</p>
+                </div>
+                <div class="year" id="year2">
+                   <p>1963</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>Following the formation of the Federation of Malaysia, it was rebranded as Malaysian Airways. </p>
+                </div>
+                <div class="year" id="year3">
+                   <p>1966</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>After Singapore's separation from the federation, the airline was reorganized and renamed Malaysia-Singapore Airlines (MSA).</p>
+                </div>
+            </div>
+
+            <div class="f-head">
+                <p>SPLIT AND EXPANSION</p>
+            </div>
+            <div class="f-img">
+                <img src="Images\BITT_1972_SIA_rectangle.jpg">
+            </div>
+            <div class="item">
+                <div class="year" id="year4">
+                   <p>1972</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>Due to differing strategic priorities—Singapore wanted to focus on global expansion while Malaysia preferred domestic routes—MSA was dissolved. 
+                    <br>This led to the creation of two distinct entities: Malaysian Airline System (MAS) and Singapore Airlines (SIA).</p>
+                </div>
+                <div class="year" id="year5">
+                   <p>1977</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>SIA became the first airline to operate the Boeing 747 in the Asia-Pacific region, beginning services on the lucrative "Kangaroo Route" to London.</p>
+                </div>
+                <div class="year" id="year6">
+                   <p>1987</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p> The airline launched its iconic and enduring metallic gold and dark blue livery, and the signature "Singapore Girl" donning her 
+                    <br>Pierre Balmain-designed sarong kebaya became a globally recognized symbol of the brand</p>
+                </div>
+            </div>
+
+            <div class="f-head">
+                <p>MODERN MILESTONES AND INDUSTRY FIRSTS</p>
+            </div>
+            <div class="f-img">
+                <img src="Images\img0114.jpg">
+            </div>
+            <div class="item">
+                <div class="year" id="year7">
+                   <p>1990s</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>SIA cemented its reputation for a young fleet and elevated service, expanding deep into the American, European, and Asian markets.</p>
+                </div>
+                <div class="year" id="year8">
+                   <p>2004</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>It launched the longest non-stop commercial flight in the world at the time, connecting Singapore directly to Newark Liberty International Airport in the United States.</p>
+                </div>
+                <div class="year" id="year9">
+                   <p>2007</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>SIA made aviation history by becoming the first airline to fly the massive Airbus A380, revolutionizing premium air travel with features like private Suites.</p>
+                </div>
+            </div>
+
+            <div class="f-head">
+                <p>RESILIENCE AND THE 21ST CENTURY</p>
+            </div>
+            <div class="f-img">
+                <img src="Images\AFP__20250617__62MT3T2__v1__MidRes__NzealandTransportAir-1-2026-05-1cd2e56d74bd633685c2a6024b835797.avif">
+            </div>
+            <div class="item">
+                <div class="year" id="year10">
+                   <p>Pandemic Disruption & Recovery</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p>The airline suffered severe financial setbacks during the COVID-19 pandemic.
+                    <br> However, strong backing from Singapore's state investment fund, Temasek Holdings, allowed the airline to weather the storm.</p>
+                </div>
+                <div class="year" id="year11">
+                   <p>Current Status</p>
+                   <p>&#9660;</p>
+                </div>
+                <div class="desc" id="desc">
+                    <p> Today, Singapore Airlines has fully bounced back, routinely topping global aviation rankings. 
+                    <br>Through its parent operations and subsidiaries like Scoot, it connects over 120 destinations worldwide.</p>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <ul>
+                <a href="#year1"><li>1947</li></a>
+                <br>
+                <a href="#year2"><li>1963</li></a>
+                <br>
+                <a href="#year3"><li>1966</li></a>
+                <br>
+                <a href="#year4"><li>1972</li></a>
+                <br>
+                <a href="#year5"><li>1977</li></a>
+                <br>
+                <a href="#year6"><li>1987</li></a>
+                <br>
+                <a href="#year7"><li>1990s</li></a>
+                <br>
+                <a href="#year8"><li>2004</li></a>
+                <br>
+                <a href="#year9"><li>2007</li></a>
+                <br>
+                <a href="#year10"><li>Pandemic Disruption and Recovery</li></a>
+                <br>
+                <a href="#year11"><li>Current Status</li></a>
+                <br>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+        <div class="footer-brand">
+            <img src="Images\images-removebg-preview.png" alt="Singapore Airlines Logo" class="footer-logo">
+            <p class="footer-tagline">Fly with comfort, luxury, and world-class hospitality. Experience the premier journey across global horizons.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="footer-apps">
+            <h3>Connect With Us</h3>
+            <p class="contact-number"><strong>Hotline:</strong> +65 6223 8888</p>
+            <p class="contact-email"><strong>Email:</strong> support@singaporeair.com</p>
+            <p class="download-text">Download the KrisFlyer App:</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn">App Store</a>
+                <a href="#" class="app-btn">Google Play</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer-bottom">
+        <p>&copy; 2026 Singapore Airlines. All Rights Reserved.</p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Cookie Policy</a>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+       function openNav() {
+          document.getElementById("mySidebar").style.width = "300px";
+        }
+
+       function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openNavigation() {
+          document.getElementById("user-Sidebar").style.width = "300px";
+        }
+
+       function closeNavigation() {
+          document.getElementById("user-Sidebar").style.width = "0";
+        }
+
+        $(".year").click(function see(){
+            $(this).next(".desc").toggle("slow");
+        });
+
+    </script>
+</body>
+</html>

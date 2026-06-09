@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Credentials</title>
+    <link rel="icon" type="img/png" href="Images\images-removebg-preview.png">
+    <style>
+        body {
+            background-color: rgb(7, 41, 82);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        
+        .header-section {
+            width: 100%;
+            height: 40vh; 
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(7, 41, 82, 0.5), rgba(7, 41, 82, 0.7)), 
+                        url('Images/Singapore_Airlines_Airbus_A350-941_F-WZFD_to_9V-SMF.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+
+        .header-section p {
+            font-size: 1.5rem;
+            color: #B79257; 
+            margin-top: 10px;
+        }
+
+        
+        .login-container {
+            margin-top: -50px; 
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            color: #333;
+            box-shadow: 0px 15px 40px rgba(0,0,0,0.5);
+            border-top: 5px solid #B79257; 
+        }
+
+        .box h2 {
+            text-align: center;
+            color: rgb(7, 41, 82);
+            margin-top: 0;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            background-color: #B79257; 
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: rgb(7, 41, 82); 
+            transform: translateY(-2px);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .register-link a {
+            color: rgb(7, 41, 82);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .register-link a:hover {
+            color: #B79257;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>Welcome to <br>Singapore Airlines</h1>
+        <p>Your journey begins here</p>
+    </div>
+
+    <div class="login-container">
+        <div class="box">
+            <h2>Login to your account</h2>
+            <form action="Homepage.html" onsubmit="alert('Login successful!')">
+                <label for="Email">Email Address</label>
+                <input type="email" id="Email" placeholder="Enter your registered email" required>
+
+                <label for="Password">Password</label>
+                <input type="password" id="Password" placeholder="Enter your password" required>
+                
+                <button type="submit" class="submit-btn">LOGIN</button>
+            </form>
+
+            <div class="register-link">
+                Don't have an account? <a href="Register.html">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

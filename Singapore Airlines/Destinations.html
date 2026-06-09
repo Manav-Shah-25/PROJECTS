@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where we fly to</title>
+    <link rel="icon" type="img/png" href="Images\images-removebg-preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="family">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased; 
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        margin:0; 
+        background-color: #f4f6f8;
+        color: #2c3e50;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    }
+    
+    .header {
+            background-color: rgb(7, 41, 82);
+            padding: 1px 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            height: 100px;
+            box-sizing: border-box;
+            overflow: hidden;
+    }
+
+    .content {
+            display: flex;         
+            flex-direction: row;   
+            align-items: center;   
+            gap: 10px;             
+    }
+
+    .content button {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            cursor: pointer;
+    }
+
+    .content button:hover {
+            background-color: #B79257;
+            transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .content button:active {
+           background-color: rgb(7, 41, 82);
+    }
+
+    .logo-area img {
+            height: 90px; 
+            width: auto;
+            display: block;
+    }
+
+    .User-Profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    }
+
+    .User-Profile button {
+            height: 65px;  
+            width: 65px;   
+            border-radius: 50%; 
+            padding: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            cursor: pointer;
+    }
+
+    .User-Profile button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        background-color: #B79257;
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-links a::after {
+        content: '›'; 
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px); 
+    }
+
+    .sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .user-sidebar {
+        height: 100%;
+        width: 0; 
+        position: fixed;
+        z-index: 2000; 
+        top: 0;
+        right: 0; 
+        background-color: #B79257; 
+        overflow-x: hidden;
+        transition: 0.4s; 
+        padding-top: 20px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .user-sidebar img {
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        
+    }
+
+    .user-sidebar-links a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .user-sidebar-links a::after {
+        content: '›';
+        font-size: 24px;
+        color: white; 
+        transition: 0.3s;
+    }
+
+    .user-sidebar-links a:hover::after {
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .user-sidebar-links a:hover {
+        background-color: rgb(7, 41, 82);
+        padding-left: 40px; 
+    }
+
+    .user-sidebar .closebutton {
+        font-size: 36px;
+        color: white;
+        text-decoration: none;
+        line-height: 1;
+        order: 2;
+    }
+
+    .user-sidebar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px 20px 30px;
+        border-top: 5px solid white;
+        border-bottom: 5px solid white; 
+        margin-bottom: 15px;
+        background-color: rgb(7, 41, 82);
+    }
+
+    .info-heading {
+        max-width: 100%;
+        height: 400px;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+    }
+
+    .info-heading p span {
+        color: #B79257;
+        padding: 20px;
+    }
+
+    .info-heading p {
+        color: rgb(7, 41, 82);
+        font-size: 42px;
+        font-weight: bold;
+        margin-top: 320px;
+        z-index: 1;
+        position: absolute;
+    }
+
+    .info-heading img {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        position: relative;
+        object-fit: cover;
+        opacity: 0.7;
+        overflow: hidden;
+    }
+
+    .info {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        height: 500px;
+        max-width: 1400px;
+        background-color: white;
+        margin: 60px auto;
+        padding: 40px;
+    }
+
+    .info p{
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        color: #2c3e50;
+        max-width: 1200px;
+        line-height: 1.8;
+        font-weight: 400;
+    }
+
+    .des-img {
+        height: 800px;
+        max-width: 1430px;
+        border-radius: 12px;
+        margin: 40px auto;
+    }
+
+    .des-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .continent {
+        max-width: 1430px;
+        height: 80px;
+        font-size: 24px;
+        font-weight: bold;
+        border-style: outset;
+        background-color: #ffffff;
+        color: #2c3e50;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+        margin-left: 40px;
+    }
+
+    .continent p {
+        padding-left: 20px;
+    }
+
+    .country {
+        display: none;
+        font-size: 18px;
+        line-height: 1.5;
+        max-width: 1430px;
+        height: fit-content;
+        border-style: outset;
+        background-color: #ffffff;
+        color: #2c3e50;
+        margin-left: 40px;
+        margin-bottom: 40px;
+    }
+
+    .site-footer {
+    background-color: rgb(7, 41, 82);
+    color: #ffffff;
+    padding: 60px 40px 20px 40px;
+    margin-top: 60px; 
+    }
+
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+    }
+
+    .footer-brand .footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 15px;
+    }
+
+    .footer-brand .footer-tagline {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cbd5e1; 
+    margin-bottom: 20px;
+    }
+
+    .footer-socials a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+    color: #B79257; 
+    }
+
+    .footer-container h3 {
+    color: #B79257; 
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    }
+
+    .footer-apps p {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin: 5px 0 15px 0;
+    }
+
+    .footer-apps strong {
+    color: #ffffff;
+    }
+
+    .download-text {
+    margin-top: 20px;
+    font-weight: bold;
+    }
+
+    .app-buttons {
+    display: flex;
+    gap: 10px;
+    }
+
+    .app-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    }
+
+    .app-btn:hover {
+    background-color: #B79257;
+    border-color: #B79257;
+    }
+
+    .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #94a3b8;
+    }
+
+    .footer-bottom p {
+    margin: 0;
+    }
+
+    .footer-legal-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+    }
+
+    .footer-legal-links a:hover {
+    color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-area">
+            <img src="Images\images-removebg-preview.png" alt="Logo">
+        </div>
+        <div class="content" >
+            <button onclick="openNav()">Menu</button>
+            <a href="About Page.html" style="text-decoration: none;">
+            <button>About</button>
+            </a>
+            <a href="Careers.html" style="text-decoration: none;">
+            <button>Careers</button>
+            </a> 
+            <a href="Login.html" style="text-decoration: none;">
+            <button>Login</button>
+            </a>
+            <div class="User-Profile">
+            <button onclick="openNavigation()"><img src="Images\727399.png"></button>
+            </div>
+        </div>
+    </div>
+     
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sidebar-links">
+            <a href="Homepage.html">Home</a>
+            <a href="Bookings.html">Book a Flight</a>
+            <a href="#">Flight Status</a>
+            <a href="Web-checkin.html">Web Check-In</a>
+            <a href="#">Inflight Services</a>
+            <a href="Destinations.html">Destinations</a>
+            <a href="Fleet.html">Our Fleet</a>
+            
+        </div>
+    </div>
+
+    <div id="user-Sidebar" class="user-sidebar">
+    <div class="user-sidebar-top">
+        <div id="user-sidebar-profile" class="user-sidebar-profile">
+            <img src="Images\727399.png" alt="User Profile">
+        </div>
+        <a href="javascript:void(0)" class="closebutton" onclick="closeNavigation()">&times;</a>
+    </div>
+    
+    <div class="user-sidebar-links">
+        <a href="#">Your Account</a>
+        <a href="#">Your Bookings</a>
+        <a href="#">Reward Points</a>
+        <a href="#">Notifications</a>
+        <a href="Login.html" onclick="alert('Are you sure you want to log out?')">Log Out</a>
+    </div>
+    </div>
+
+    <div class="info-heading">
+        <p><span>|</span>Where We Fly</p>
+        <img src="Images\Singapore_Airlines_Airbus_A350-941_F-WZFD_to_9V-SMF.jpg">
+    </div>
+
+    <div class="info">
+        <p>Singapore Airlines, alongside our low-cost subsidiary Scoot, directly serves over 120 destinations across more than 35 countries spanning six continents.
+        <br>Operating from our world-class hub at Singapore Changi Airport, the airline boasts an exceptionally robust network across the Asia-Pacific region, linking travelers to key hubs in China, India, Australia, and Japan. 
+        <br>We is also famous for operating some of the world's longest commercial flights, connecting Singapore nonstop to North American gateways like New York, Newark, Los Angeles, and San Francisco</p>
+        <p>Beyond our own fleet, Singapore Airlines massively expands its global reach through its membership in the Star Alliance network.
+        <br>This alliance, paired with strategic joint ventures and codeshare agreements with major carriers like Lufthansa, All Nippon Airways (ANA), Air New Zealand, and Malaysia Airlines, 
+        unlocks seamless connections to thousands of additional cities. 
+        <br>Through these partnerships, passengers can easily book coordinated itineraries to trickier regions—like domestic destinations inside the United States, deep into regional Europe, or across South America and Africa.</p>
+    </div>
+
+    <div class="des-img">
+        <img src="Images\Gemini_Generated_Image_szn3wszn3wszn3ws.png">
+    </div>
+
+    <div class="continent">
+        <p>ASIA</p>
+        <p>&#9660;</p>
+    </div>
+    <div class="country">
+        <ul>
+            <li>Singapore(Hub)</li><br>
+            <li>Tokyo</li><br>
+            <li>Seoul</li><br>
+            <li>Beijing</li><br>
+            <li>Shanghai</li><br>
+            <li>Hongkong</li><br>
+            <li>Manila</li><br>
+            <li>Bangkok</li><br>
+            <li>Mumbai</li><br>
+            <li>New Delhi</li><br>
+            <li>Kuala Lumpur</li><br>
+            <li>Jakarta</li><br>
+            <li>Denpasar(Bali)</li><br>
+        </ul>
+    </div>
+
+    <div class="continent">
+        <p>EUROPE</p>
+        <p>&#9660;</p>
+    </div>
+    <div class="country">
+        <ul>
+            <li>London</li><br>
+            <li>Paris</li><br>
+            <li>Frankfurt</li><br>
+            <li>Zurich</li><br>
+            <li>Milan</li><br>
+            <li>Rome</li><br>
+            <li>Barcelona</li><br>
+            <li>Copenhagen</li><br>
+            <li>Amsterdam</li><br>
+            <li>Istanbul</li><br>
+            <li>Moscow</li><br>
+        </ul>
+    </div>
+
+    <div class="continent">
+        <p>AFRICA</p>
+        <p>&#9660;</p>
+    </div>
+    <div class="country">
+        <ul>
+            <li>Johannesburg</li><br>
+            <li>Cape Town</li><br>
+        </ul>
+    </div>
+
+    <div class="continent">
+        <p>MIDDLE EAST</p>
+        <p>&#9660;</p>
+    </div>
+    <div class="country">
+        <ul>
+            <li>Dubai</li><br>
+            <li>Doha</li><br>
+        </ul>
+    </div>
+
+    <div class="continent">
+        <p>NORTH AMERICA</p>
+        <p>&#9660;</p>
+    </div>
+    <div class="country">
+        <ul>
+            <li>New York</li><br>
+            <li>Los Angeles</li><br>
+            <li>Houston</li><br>
+            <li>San Fransisco</li><br>
+            <li>Seattle</li><br>
+            <li>Vancouver</li><br>
+        </ul>
+    </div>
+
+    <div class="continent">
+        <p>OCEANIA</p>
+        <p>&#9660;</p>
+    </div>
+    <div class="country">
+        <ul>
+            <li>Perth</li><br>
+            <li>Adelaide</li><br>
+            <li>Sydney</li><br>
+            <li>Melbourne</li><br>
+            <li>Brisbane</li><br>
+            <li>Auckland</li><br>
+        </ul>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+        <div class="footer-brand">
+            <img src="Images\images-removebg-preview.png" alt="Singapore Airlines Logo" class="footer-logo">
+            <p class="footer-tagline">Fly with comfort, luxury, and world-class hospitality. Experience the premier journey across global horizons.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="footer-apps">
+            <h3>Connect With Us</h3>
+            <p class="contact-number"><strong>Hotline:</strong> +65 6223 8888</p>
+            <p class="contact-email"><strong>Email:</strong> support@singaporeair.com</p>
+            <p class="download-text">Download the KrisFlyer App:</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn">App Store</a>
+                <a href="#" class="app-btn">Google Play</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer-bottom">
+        <p>&copy; 2026 Singapore Airlines. All Rights Reserved.</p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Cookie Policy</a>
+        </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+       function openNav() {
+          document.getElementById("mySidebar").style.width = "300px";
+        }
+
+       function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openNavigation() {
+          document.getElementById("user-Sidebar").style.width = "300px";
+        }
+
+       function closeNavigation() {
+          document.getElementById("user-Sidebar").style.width = "0";
+        }
+    
+        $(document).ready(function () {
+            $(".continent").click(function drop(){
+            $(this).next(".country").toggle("slow");
+        });
+        });
+
+    </script>
+</body>
+</html>

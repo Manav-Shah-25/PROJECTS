@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="icon" type="img/png" href="Images\images-removebg-preview.png">
+    <style>
+        body {
+            background-color: rgb(7, 41, 82);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            width: 90%;
+            max-width: 1200px;
+            gap: 50px;
+        }
+
+        .welcome-text {
+            flex: 2.5;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 200px;
+            background: linear-gradient(rgba(7, 41, 82, 0.6), rgba(7, 41, 82, 0.6)), 
+                        url('Images/singapore-airlines-worlds-best.jpeg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .welcome-text h1 {
+            font-size: 3rem;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            
+        }
+
+        .welcome-text p {
+            font-size: 1.4rem;
+            color: #B79257; 
+            margin-top: 15px;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            
+        }
+
+        .box {
+            background-color: #ffffff; 
+            padding: 40px;
+            border: 1px solid #B79257; 
+            border-radius: 12px;
+            width: 450px;
+            color: #333333;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .box h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: rgb(7, 41, 82);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .gender-section {
+            margin-bottom: 15px;
+        }
+
+        .gender-section input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .submit-btn {
+            background-color: #B79257; 
+            color: white;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: rgb(7, 41, 82); 
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="welcome-text">
+            <h1>Welcome to Singapore Airlines</h1>
+            <p style="font-size: 1.5rem;">Start your journey to fly....</p>
+        </div>
+
+        <div class="box">
+            <h2>Register to enjoy SIA luxuries</h2>
+            <form action="Login.html" onsubmit="alert('You have been registered successfully! Kindly login with your details.')">
+                <label for="Firstname">Enter Your First Name:</label>
+                <input type="text" id="Firstname" name="Firstname" placeholder="As per your passport" required>
+
+                <label for="Lastname">Enter Your Last Name:</label>
+                <input type="text" id="Lastname" name="Lastname" placeholder="As per your passport" required>
+
+                <label for="Age">Enter Your Age:</label>
+                <input type="number" id="Age" name="Age" placeholder="Must be at least 18 years of age" required>
+
+                <div class="gender-section">
+                    <label>Select Your Gender:</label><br>
+                    <input type="radio" id="male" name="Gender" value="Male" required>
+                    <label for="male" style="font-weight: normal;">Male</label>
+                    
+                    <input type="radio" id="female" name="Gender" value="Female" required>
+                    <label for="female" style="font-weight: normal;">Female</label>
+                    
+                    <input type="radio" id="others" name="Gender" value="Others" required>
+                    <label for="others" style="font-weight: normal;">Others</label>
+                </div>
+
+                <label for="Nationality">Select Your Country:</label>
+                <select name="country" id="Nationality" required>
+                    <option>Singapore</option>
+                    <option>United States of America</option>
+                    <option>Canada</option>
+                    <option>India</option>
+                    <option>Germany</option>
+                    <option>Japan</option>
+                    <option>France</option>
+                    <option>Italy</option>
+                    <option>Australia</option>
+                    <option>New Zealand</option>
+                    <option>United Kingdom</option>
+                    <option>Ireland</option>
+                    <option>Russia</option>
+                    <option>United Arab Emirates</option>
+                    <option>Saudi Arabia</option>
+                </select>
+
+                <label for="Email">Enter Your Email-Address:</label>
+                <input type="email" id="Email" name="E-mail" required>
+
+                <label for="Password">Create a password:</label>
+                <input type="password" id="Password" name="Password" placeholder="Atleast 8-15 characters" required>
+
+                <label for="ConfirmPassword">Confirm your password:</label>
+                <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                 
+                <button type="submit" class="submit-btn">Register Now</button>
+                   
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
